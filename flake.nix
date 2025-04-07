@@ -34,12 +34,20 @@
             pkgs.stdenv.mkDerivation {
               name = "superhtml";
               version = "0.0.0";
+              outputs = [
+                "out"
+                "tree_sitter"
+              ];
               src = ./.;
+              nativeBuildInputs = [zig_hook];
               zigBuildFlags = [
                 "--system"
                 "${pkgs.callPackage ./build.zig.zon.nix {}}"
               ];
-              nativeBuildInputs = [zig_hook];
+              postInstall = ''
+                mkdir -p $tree_sitter
+                cp -R tree-sitter-superhtml $tree_sitter/superhtml
+              '';
               meta = {
                 mainProgram = "superhtml";
               };
