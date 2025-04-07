@@ -146,9 +146,10 @@ pub fn checkHtml(
     path: ?[]const u8,
     code: [:0]const u8,
 ) !void {
+    const writer = std.io.getStdErr().writer();
     const ast = try super.html.Ast.init(arena, code, .html);
     if (ast.errors.len > 0) {
-        ast.printErrors(code, path);
+        try ast.printErrors(code, path, writer);
         std.process.exit(1);
     }
 }
@@ -158,15 +159,16 @@ fn checkSuper(
     path: ?[]const u8,
     code: [:0]const u8,
 ) !void {
+    const writer = std.io.getStdErr().writer();
     const html = try super.html.Ast.init(arena, code, .superhtml);
     if (html.errors.len > 0) {
-        html.printErrors(code, path);
+        try html.printErrors(code, path, writer);
         std.process.exit(1);
     }
 
     const s = try super.Ast.init(arena, html, code);
     if (s.errors.len > 0) {
-        s.printErrors(code, path);
+        try s.printErrors(code, path, writer);
         std.process.exit(1);
     }
 }

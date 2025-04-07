@@ -73,15 +73,16 @@ fn renderInterface(
     path: ?[]const u8,
     code: [:0]const u8,
 ) ![]const u8 {
+    const writer = std.io.getStdErr().writer();
     const html_ast = try super.html.Ast.init(arena, code, .superhtml);
     if (html_ast.errors.len > 0) {
-        html_ast.printErrors(code, path);
+        try html_ast.printErrors(code, path, writer);
         std.process.exit(1);
     }
 
     const s = try super.Ast.init(arena, html_ast, code);
     if (s.errors.len > 0) {
-        s.printErrors(code, path);
+        try s.printErrors(code, path, writer);
         std.process.exit(1);
     }
 
