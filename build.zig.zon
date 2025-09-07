@@ -5,8 +5,8 @@
     .minimum_zig_version = "0.15.0",
     .dependencies = .{
         .afl_kit = .{
-            .url = "git+https://github.com/kristoff-it/zig-afl-kit#8ef04d1db48650345dca68da1e1b8f2615125c40",
-            .hash = "afl_kit-0.1.0-NdJ3cvscAACLEvjZTB017IAks_Uq5ux1qpA-klDe384Y",
+            .url = "git+https://github.com/jcollie/zig-afl-kit#98859bc815166d253764b498669ec4df75a15c37",
+            .hash = "afl_kit-0.1.0-NdJ3chAdAABiOcwXk_aKGpzGr3ou0qIxAVnVjUqXyvii",
             .lazy = true,
         },
         .known_folders = .{
@@ -22,8 +22,8 @@
             .hash = "lsp_kit-0.1.0-bi_PL5YyCgA2QFEza6llr2Uy08QUQsWBu2wKvtr8tbLx",
         },
         .scripty = .{
-            .url = "git+https://github.com/kristoff-it/scripty#50dbab8945440089384f26ec165d870c29555247",
-            .hash = "scripty-0.1.0-LKK5O7v4AADWWXuFcTJky_5sY12tmw3kRi3k2wkpfxAX",
+            .url = "git+https://github.com/jcollie/scripty#17a8ee8ada33bd45329d96671e25c7f09e998144",
+            .hash = "scripty-0.1.0-LKK5O7f4AADajW5A_FsfNQBqRts7MiIZZkGVXkXDCCcg",
         },
     },
     .paths = .{
